@@ -21,7 +21,9 @@ def forward(socket1,socket2):
 
 def port_forward(target_ip, target_port, my_ip = "0.0.0.0", my_port = 7070):
     linstener = TCP(ip = my_ip, port = my_port)
-    linstener.listen(max_connections = 5)
+    
+
+    linstener.listen(max_connections = 255)
     i = 0
 
     sockets = []

@@ -22,25 +22,16 @@ class TCP:
         self.port = port
         self.verbose = verbose
         self.type = None # "server", "client", None
-        if REUSE:
+        if reuse:
             self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 
     def listen(self, ip = None, port = None,max_connections = 1, verbose = True):
-        if port:
-            self.port = port
-        else:
-            port = self.port
-        if ip:
-            self.ip = ip
-        else:
-            ip = self.ip
-        port = port if port else self.port  # setting defualt values to ip and port if not given
-        ip = ip if ip else self.ip
+        self.set_ip_port(ip,port)
         self.type = "server"
-        self.socket.bind((ip, port))
+        self.socket.bind((self.ip, self.port))
         self.socket.listen(max_connections)
-        printerr(f"Server listening on port {port}...", self.verbose)
+        printerr(f"Server listening on port {self.port}...", self.verbose)
         return 0
 
 
@@ -54,17 +45,11 @@ class TCP:
 
 
 
-    def connect(self,ip = None, port = None):
-        if port:
-            self.port = port
-        else:
-            port = self.port
-        if ip:
-            self.ip = ip
-        else:
-            ip = self.ip
-        self.socket.connect((ip, port))
+    def connect(self,ip = None, port = None) -> int:
+        self.set_ip_port(ip,port)
         self.type = "client"
+        return self.socket.connect_ex((self.ip, self.port))
+
 
     def send(self, bytes):
         self.socket.send(bytes)
@@ -73,7 +58,12 @@ class TCP:
     def close(self):
         self.socket.close()
 
-
+    def set_ip_port(self, ip = None,port = None):
+        if ip:
+            self.ip = ip
+        if port:
+            self.port = port
+        
 
 
 
