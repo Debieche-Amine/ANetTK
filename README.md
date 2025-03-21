@@ -4,7 +4,7 @@
 A collection of custom made network tools, more tools will be added soon.
 
 # Version
-ANetTK 1.0
+ANetTK 1.0.1
 # installation
 ```bash
 git clone https://github.com/Debieche-Amine/ANetTK.git
@@ -25,6 +25,7 @@ python PortForward 192.168.1.5:22 0.0.0.0:8000
 ```
 this would forward 192.168.1.5:22 to your machine on port 8000  (0.0.0.0 indicates all the interfaces)
 
+tested on ssh, text me if you find a case that doesnt work
 
 # Core modules
 ## 1- MySocket
@@ -46,7 +47,7 @@ class TCP:
         self.verbose # default True, writes to stderr, if False: write nothing
         
 	def listen(self, ip = None, port = None,max_connections = 1, verbose = True)
-	def accept(self) -> TCP
+	def accept(self) -> "TCP"
 	def connect(self,ip = None, port = None)
 	def send(self, bytes)
 	def recv(self,n_bytes) -> bytes

@@ -44,7 +44,7 @@ class TCP:
         return 0
 
 
-    def accept(self) -> TCP:
+    def accept(self) -> "TCP":
         s,addr = self.socket.accept()
         sock = TCP(ip = addr[0], port = addr[1])
         sock.type = "client"
