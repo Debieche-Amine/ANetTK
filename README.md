@@ -21,8 +21,7 @@ cd ANetTK
 
 ### Description
 
-Forwards a remote port to a local port on your machine
-Tested on http,ssh --- Text me if you find a case that doesnt work
+Forwards a remote port to a local port on your machine, Tested on http,ssh --- Text me if you find a case that doesnt work
 
 ### how to use
 ```bash
@@ -54,7 +53,7 @@ python IPProbe.py [-c COUNT] [-w WAIT] ip
 ```
 
 **example:**
-```python
+```bash
 python IPProbe.py 192.168.1.0/24
 ```
 this will ping hosts starting from 192.168.1.1 to 192.168.1.254
