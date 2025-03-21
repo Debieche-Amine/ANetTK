@@ -21,7 +21,7 @@ cd ANetTK
 
 ### Description
 
-Forwards a remote port to a local port on your machine, Tested on http,ssh --- Text me if you find a case that doesnt work
+Forwards **TCP** connections from a local port to a remote(or local) port, Tested on http,ssh --- Text me if you find a case that doesnt work
 
 ### how to use
 ```bash
@@ -31,7 +31,7 @@ python PortForward.py target_ip:target_port my_ip:my_port
 ```bash
 python PortForward.py 192.168.1.5:22 0.0.0.0:8000
 ```
-this would forward 192.168.1.5:22 to your machine on port 8000 (0.0.0.0 indicates all the interfaces)
+this would make 192.168.1.5:22 accessibale via 0.0.0.0:8000 (0.0.0.0 indicates all the interfaces of your machine)
 
 **or**
 ```python
